@@ -1,40 +1,50 @@
 ## userテーブル
-| column       | type     | option       |
-| ------------ | -------- | ------------ |
-| nickname     | string   | null: false  |
-| email        | string   | null: false  |
-| password     | string   | null: false  |
-| name         | string   | null: false  |
+| column             | type     | option                   |
+| ------------------ | -------- | ------------------------ |
+| nickname           | string   | null: false              |
+| email              | string   | null: false unique :true |
+| encrypted_password | string   | null: false              |
+| family_name        | string   | null: false              |
+| first_name         | string   | null: false              |
+| family_yomi        | string   | null: false              |
+| first_yomi         | string   | null: false              |
+| birthday           | string   | null: false              |
 
 ## Association
 * has_many :items
-* has_many :comments
+* has_many :comment
 * has_many :purchase
 
 ## itemsテーブル
-| -------- | -------- | ------------ |
-| title    |  string  | null: false  |
-| concept  |  text    | null: false  |
-| detail   |  string  | null: false  |
-| price    |  string  | null: false  |
+| --------- | -------- | ------------ |
+| title     |  string  | null: false  |
+| concept   |  text    | null: false  |
+| category  |  string  | null: false  |
+| condition |  string  | null: false  |
+| price     |  string  | null: false  |
+| burden    |  string  | null: false  |
+| area      |  string  | null: false  |
+| date      |  string  | null: false  |
 
 ## Association
 * belongs_to :user
-* has_many :comments
+* has_many :comment
 * has_one :purchase
 
 ## purchaseテーブル
-| --------- | --------- | ----------------- |
-| residence | string    | null: false       |
-| user.id   | reference | foreign_key: true |
+| --------- | ---------- | ----------------- |
+| residence | references | foreign_key: true |
+| user      | references | foreign_key: true |
 
-* belongs_to :items
-* belongs_to :users
+* belongs_to :item
+* belongs_to :user
 
 ## commentsテーブル
 | -------- | ---------- | ----------------- |
 | text     | text       | null: false       |
-| user.id  | references | foreign_key: true |
+| user     | references | foreign_key: true |
+| item     | references | foreign_key: true |
+| address  | string     | null: false       |
 
-* belongs_to :items
+* belongs_to :item
 * belongs_to :user
