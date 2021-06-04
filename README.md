@@ -12,8 +12,8 @@
 
 ## Association
 * has_many :items
-* has_many :comment
-* has_many :purchase
+* has_many :comments
+* has_many :purchases
 
 ## itemsテーブル
 | --------- | -------- | ------------ |
@@ -28,7 +28,7 @@
 
 ## Association
 * belongs_to :user
-* has_many :comment
+* has_many :comments
 * has_one :purchase
 
 ## purchaseテーブル
