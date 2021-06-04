@@ -9,24 +9,32 @@
 ## Association
 * has_many :items
 * has_many :comments
+* has_many :purchase
 
-## itemテーブル
+## itemsテーブル
 | -------- | -------- | ------------ |
 | title    |  string  | null: false  |
 | concept  |  text    | null: false  |
 | detail   |  string  | null: false  |
-| send     |  string  | null: false  |
 | price    |  string  | null: false  |
 
 ## Association
 * belongs_to :user
 * has_many :comments
+* has_one :purchase
+
+## purchaseテーブル
+| --------- | --------- | ----------------- |
+| residence | string    | null: false       |
+| user.id   | reference | foreign_key: true |
+
+* belongs_to :items
+* belongs_to :users
 
 ## commentsテーブル
 | -------- | ---------- | ----------------- |
 | text     | text       | null: false       |
-| comment  | references | foreign_key: true |
-| user     | references | foreign_key: true |
+| user.id  | references | foreign_key: true |
 
 * belongs_to :items
 * belongs_to :user
