@@ -16,15 +16,15 @@
 * has_many :purchases
 
 ## itemsテーブル
-| --------- | -------- | ------------ |
-| title     |  string  | null: false  |
-| concept   |  text    | null: false  |
-| category  |  string  | null: false  |
-| condition |  string  | null: false  |
-| price     |  string  | null: false  |
-| burden    |  string  | null: false  |
-| area      |  string  | null: false  |
-| date      |  string  | null: false  |
+| --------- | -------- | ------------------ |
+| title     |  string  | null: false        |
+| concept   |  text    | null: false        |
+| category  |  integer | foreign_key: true  |
+| condition |  integer | foreign_key: true  |
+| price     |  string  | null: false        |
+| burden    |  integer | foreign_key: true  |
+| area      |  integer | foreign_key: true  |
+| date      |  integer | foreign_key: true  |
 
 ## Association
 * belongs_to :user
@@ -33,13 +33,13 @@
 
 ## purchaseテーブル
 | --------- | ---------- | ----------------- |
-| residence | references | foreign_key: true |
+| purchase  | references | foreign_key: true |
 | user      | references | foreign_key: true |
 
 * belongs_to :item
 * belongs_to :user
 
-## commentsテーブル
+## buyersテーブル
 | -------- | ---------- | ----------------- |
 | text     | text       | null: false       |
 | user     | references | foreign_key: true |
