@@ -38,6 +38,7 @@
 * belongs_to_active_hash :days
 * belongs_to_active_hash :prefectures
 
+
 ## commentsテーブル
 | ----
 | user    | integer | null: false |
