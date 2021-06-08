@@ -1,4 +1,4 @@
-## userテーブル
+## usersテーブル
 | column             | type     | option                   |
 | ------------------ | -------- | ------------------------ |
 | nickname           | string   | null: false              |
@@ -16,20 +16,36 @@
 * has_many :purchases
 
 ## itemsテーブル
-| --------- | -------- | ------------------ |
-| title     |  string  | null: false        |
-| concept   |  text    | null: false        |
-| category  |  integer | foreign_key: true  |
-| condition |  integer | foreign_key: true  |
-| price     |  string  | null: false        |
-| burden    |  integer | foreign_key: true  |
-| area      |  integer | foreign_key: true  |
-| date      |  integer | foreign_key: true  |
+| ----------- | ----------- | ------------------ |
+| photo       |  string     | nill: false        |
+| title       |  string     | null: false        |
+| concept     |  text       | null: false        |
+| category    |  integer    | null: false        |
+| condition   |  integer    | null: false        |
+| burden      |  integer    | null: false        |
+| area        |  integer    | null: false        |
+| days        |  integer    | null: false        |
+| prefectures |  integer    | null: false        |
+| user        |  references | null: false        |
 
 ## Association
 * belongs_to :user
 * has_many :comments
 * has_one :purchase
+* belongs_to_active_hash :category
+* belongs_to_active_hash :condition
+* belongs_to_active_hash :area
+* belongs_to_active_hash :days
+* belongs_to_active_hash :prefectures
+
+## commentsテーブル
+| ----
+| user    | integer | null: false |
+| content | string  | null: false |
+| buyers  | integer | null: false |
+
+* belongs_to :user
+* belongs_to :item
 
 ## purchaseテーブル
 | --------- | ---------- | ----------------- |
@@ -38,13 +54,17 @@
 
 * belongs_to :item
 * belongs_to :user
+* belongs_to :purchase
 
 ## buyersテーブル
-| -------- | ---------- | ----------------- |
-| text     | text       | null: false       |
-| user     | references | foreign_key: true |
-| item     | references | foreign_key: true |
-| address  | string     | null: false       |
+| --------------- | ---------- | ----------------- |
+| post_code       | text       | null: false       |
+| prefectures     | references | foreign_key: true |
+| city            | string     | null: false       |
+| address         | string     | null: false       |
+| building_number | string     |                   |
+| phone_number    | string     | null: false       |
+| item_purchase   | integer    | foreign_key: true |
 
-* belongs_to :item
+* has_one :purchase
 * belongs_to :user
