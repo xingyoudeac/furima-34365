@@ -8,7 +8,7 @@
 | first_name         | string   | null: false              |
 | family_read        | string   | null: false              |
 | first_read         | string   | null: false              |
-| birthday           | string   | null: false              |
+| birthday           | date     | null: false              |
 
 ## Association
 * has_many :items
@@ -16,17 +16,17 @@
 * has_many :purchases
 
 ## itemsテーブル
-| ----------- | ----------- | ------------------ |
-| photo       |  string     | nill: false        |
-| title       |  string     | null: false        |
-| concept     |  text       | null: false        |
-| category    |  integer    | null: false        |
-| condition   |  integer    | null: false        |
-| burden      |  integer    | null: false        |
-| area        |  integer    | null: false        |
-| days        |  integer    | null: false        |
-| prefectures |  integer    | null: false        |
-| user        |  references | null: false        |
+| -------------- | ----------- | ------------------ |
+| photo          |  string     | nill: false        |
+| title          |  string     | null: false        |
+| concept        |  text       | null: false        |
+| category_id    |  integer    | null: false        |
+| condition_id   |  integer    | null: false        |
+| burden         |  integer    | null: false        |
+| prefectures_id |  integer    | null: false        |
+| area_id        |  integer    | null: false        |
+| days_id        |  integer    | null: false        |
+| user           |  references | null: false        |
 
 ## Association
 * belongs_to :user
@@ -49,9 +49,10 @@
 * belongs_to :item
 
 ## purchaseテーブル
-| --------- | ---------- | ----------------- |
-| purchase  | references | foreign_key: true |
-| user      | references | foreign_key: true |
+| -------------- | ---------- | ----------------- |
+| item           | integer    | foreign_key: true |
+| purchase       | integer    | foreign_key: true |
+| user           | integer    | foreign_key: true |
 
 * belongs_to :item
 * belongs_to :user
