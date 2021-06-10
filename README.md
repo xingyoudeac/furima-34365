@@ -22,10 +22,10 @@
 | category_id    |  integer    | null: false        |
 | condition_id   |  integer    | null: false        |
 | burden_id      |  integer    | null: false        |
-| prefectures_id |  integer    | null: false        |
+| prefecture_id  |  integer    | null: false        |
 | area_id        |  integer    | null: false        |
 | days_id        |  integer    | null: false        |
-| user           |  references | null: false        |
+| user           |  references | foreign_key:true   |
 
 ## Association
 * belongs_to :user
@@ -50,11 +50,12 @@
 
 ## purchaseテーブル
 | -------------- | ---------- | ----------------- |
-| item.id        | integer    | foreign_key: true |
-| user.id        | integer    | foreign_key: true |
+| item_id        | integer    | foreign_key: true |
+| user_id        | integer    | foreign_key: true |
 
 * belongs_to :item
 * belongs_to :user
+* has_one :buyer
 
 ## buyersテーブル
 | --------------- | ---------- | ----------------- |
@@ -64,7 +65,7 @@
 | address         | string     | null: false       |
 | building_number | string     |                   |
 | phone_number    | string     | null: false       |
-| purchase        | integer    | foreign_key: true |
+| purchase_id     | integer    | foreign_key: true |
 
-* has_one :purchase
+* belongs_to :purchase
 * belongs_to :user
