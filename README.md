@@ -17,12 +17,11 @@
 
 ## itemsテーブル
 | -------------- | ----------- | ------------------ |
-| photo          |  string     | nill: false        |
 | title          |  string     | null: false        |
 | concept        |  text       | null: false        |
 | category_id    |  integer    | null: false        |
 | condition_id   |  integer    | null: false        |
-| burden         |  integer    | null: false        |
+| burden_id      |  integer    | null: false        |
 | prefectures_id |  integer    | null: false        |
 | area_id        |  integer    | null: false        |
 | days_id        |  integer    | null: false        |
@@ -34,6 +33,7 @@
 * has_one :purchase
 * belongs_to_active_hash :category
 * belongs_to_active_hash :condition
+* belongs_to_active_hash :burden
 * belongs_to_active_hash :area
 * belongs_to_active_hash :days
 * belongs_to_active_hash :prefectures
@@ -50,13 +50,11 @@
 
 ## purchaseテーブル
 | -------------- | ---------- | ----------------- |
-| item           | integer    | foreign_key: true |
-| purchase       | integer    | foreign_key: true |
-| user           | integer    | foreign_key: true |
+| item.id        | integer    | foreign_key: true |
+| user.id        | integer    | foreign_key: true |
 
 * belongs_to :item
 * belongs_to :user
-* belongs_to :purchase
 
 ## buyersテーブル
 | --------------- | ---------- | ----------------- |
@@ -66,7 +64,7 @@
 | address         | string     | null: false       |
 | building_number | string     |                   |
 | phone_number    | string     | null: false       |
-| item_purchase   | integer    | foreign_key: true |
+| purchase        | integer    | foreign_key: true |
 
 * has_one :purchase
 * belongs_to :user
