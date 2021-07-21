@@ -81,7 +81,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name can't be blank")
       end
-      it "全角以外は登録出来ない" do
+      it "family_readは全角以外は登録出来ない" do
         @user.family_name = 'ore'
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name is invalid")
@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
-      it "全角以外は登録出来ない" do
+      it "first_readは全角以外は登録出来ない" do
         @user.first_name = 'ore'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid")
@@ -101,10 +101,30 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family read can't be blank")
       end
+      it "family_readが半角だと登録できない" do
+        @user.family_read = 'ｵﾚ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family read is invalid")
+      end
+      it "family_readが全角カタカナ以外だと登録できない" do
+        @user.family_read ='おれ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family read is invalid")
+      end
       it "first_readが空では登録できない" do
         @user.first_read = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First read can't be blank")
+      end
+      it "first_readが半角だと登録できない" do
+        @user.first_read = 'ｵﾚ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First read is invalid")
+      end
+      it "first_readが全角カタカナ以外だと登録出来ない" do
+        @user.first_read ='おれ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First read is invalid")
       end
       it "birthdayが空では登録できない" do
         @user.birthday = ''
