@@ -1,5 +1,2 @@
-window.addEventListener('load', function(){
-
-  const pullDownButton = documet.getElementById("price")
-  
-})
+const channels = require.context('.', true, /_channel\.js$/)
+channels.keys().forEach(channels)
