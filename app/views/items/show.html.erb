@@ -4,10 +4,10 @@
   <div class="item-box">
   <% item.each do |item|%>
     <h2 class="name">
-      <%= item.title %>
+      <%#= item.title %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag item.image ,class:"item-box-img" %>
+      <%#= image_tag item.image ,class:"item-box-img" %>
       <%if item.purchase.present? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
@@ -16,10 +16,10 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <% item.price %>
+        <%# item.price %>
       </span>
       <span class="item-postage">
-        <%= item.burden %>
+        <%#= item.burden %>
       </span>
     </div>
   <% end %>
