@@ -121,21 +121,21 @@
       <% @item.each do |item| %>
       <li class='list'>
         <%= link_to root_path(item) do %>
-        <%= image_tag item.image, class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= item.title %>
-          </h3>
-          <div class='item-price'>
-            <span>
-              <%= item.price %>円<br><%= item.burden.name %>
-            </span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+          <%= link_to image_tag(item.image, class: "item-img" ), item_path(item) %>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= item.title %>
+            </h3>
+            <div class='item-price'>
+              <span>
+                <%= item.price %>円<br><%= item.burden.name %>
+              </span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
       </li>
       <% end %>
