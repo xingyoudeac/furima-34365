@@ -48,16 +48,16 @@
 * belongs_to :user
 * belongs_to :item
 
-## purchasesテーブル
+## ordersテーブル
 | -------------- | ---------- | ----------------- |
 | item_id        | integer    | foreign_key: true |
 | user_id        | integer    | foreign_key: true |
 
 * belongs_to :item
 * belongs_to :user
-* has_one :buyer
+* has_one :address
 
-## buyersテーブル
+## Addressテーブル
 | --------------- | ---------- | ----------------- |
 | post_code       | string     | null: false       |
 | prefecture_id   | integer    | null: false       |
@@ -67,4 +67,4 @@
 | phone_number    | string     | null: false       |
 | purchase_id     | integer    | foreign_key: true |
 
-* belongs_to :purchase
+* belongs_to :order
